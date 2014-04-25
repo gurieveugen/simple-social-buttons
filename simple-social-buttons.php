@@ -425,9 +425,17 @@ window.___gcfg = {lang: '<?php echo $lang_g; ?>'};
 		}
 
 		if(count($arrButtonsCode) > 0) {
-			$ssb_buttonscode = '<div class="simplesocialbuttons">'."\n";
-			$ssb_buttonscode .= implode("\n", $arrButtonsCode) . "\n";
-			$ssb_buttonscode .= '</div>'."\n";
+			global $post;
+			if($post->post_type != 'popups')
+			{
+				$ssb_buttonscode = '<div class="simplesocialbuttons">'."\n";
+				$ssb_buttonscode .= implode("\n", $arrButtonsCode) . "\n";
+				$ssb_buttonscode .= '</div>'."\n";
+			}
+			else
+			{
+				$ssb_buttonscode = '';	
+			}
 		}
 		
 		return $ssb_buttonscode;
